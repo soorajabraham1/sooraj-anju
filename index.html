@@ -498,8 +498,8 @@ footer a{color:var(--sage)}
    EDIT THIS BLOCK — everything you need to change lives here.
    ===================================================================== */
 const CONFIG = {
-  heroLine1: "Engagement · 28 December 2026",
-  heroLine2: "Wedding · 31 December 2026",
+  heroLine1: "Engagement \u00b7 28 December 2026",
+  heroLine2: "Wedding \u00b7 31 December 2026",
   engDate:   "Monday, 28 December 2026",
   wedDate:   "Thursday, 31 December 2026",
   rsvpBy:    "15 December",            // change if you want a different deadline
@@ -507,14 +507,14 @@ const CONFIG = {
   // --- RSVP delivery (Google Forms) ---
   // Paste your Google Form's formResponse URL and the six entry IDs.
   // Leave GOOGLE_FORM_ACTION empty to run in test mode.
-  GOOGLE_FORM_ACTION: "",
+  GOOGLE_FORM_ACTION: "https://docs.google.com/forms/d/e/1FAIpQLSdYBx63vHFY7iQo2wMM_oeO8pBm6kYv_ubyUEq4hDFvN1eZnQ/formResponse",
   ENTRY: {
-    name:  "entry.000000001",
-    phone: "entry.000000002",
-    going: "entry.000000003",
-    count: "entry.000000004",
-    which: "entry.000000005",
-    note:  "entry.000000006"
+    name:  "entry.892666305",
+    phone: "entry.976376410",
+    going: "entry.1690657932",
+    count: "entry.747872801",
+    which: "entry.1874099146",
+    note:  "entry.1029182084"
   }
 };
 /* ===================================================================== */
@@ -570,13 +570,13 @@ submitBtn.addEventListener('click', () => {
   };
 
   if (!CONFIG.GOOGLE_FORM_ACTION){
-    console.log('RSVP (test mode — not saved):', data);
+    console.log('RSVP (test mode \u2014 not saved):', data);
     showThanks(going, true);
     return;
   }
 
   submitBtn.disabled = true;
-  formMsg.textContent = "Sending…";
+  formMsg.textContent = "Sending\u2026";
 
   const body = new URLSearchParams();
   Object.keys(CONFIG.ENTRY).forEach(k => body.append(CONFIG.ENTRY[k], data[k]));
