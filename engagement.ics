@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sooraj and Anju//Wedding Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:engagement-20261228-soorajanju@invitation
+DTSTAMP:20260812T000000Z
+DTSTART:20261228T053000Z
+DTEND:20261228T083000Z
+SUMMARY:Sooraj & Anju — Engagement
+DESCRIPTION:Engagement ceremony at 11:00 AM\, followed by lunch.\n\nChurch: https://maps.app.goo.gl/T35mMdFq8n9m6hzb8
+LOCATION:Church
+URL:https://maps.app.goo.gl/T35mMdFq8n9m6hzb8
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Sooraj & Anju — Engagement tomorrow
+END:VALARM
+END:VEVENT
+END:VCALENDAR

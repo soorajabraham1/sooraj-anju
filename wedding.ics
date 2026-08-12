@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sooraj and Anju//Wedding Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding-20261231-soorajanju@invitation
+DTSTAMP:20260812T000000Z
+DTSTART:20261231T120000Z
+DTEND:20261231T163000Z
+SUMMARY:Sooraj & Anju — Wedding
+DESCRIPTION:Ceremony at 5:30 PM\, reception and dinner from 7:00 PM\, ending at 10:00 PM.\n\nChurch: https://maps.app.goo.gl/GARKdTe32N6ZDRhA7\nReception: https://maps.app.goo.gl/XQ3QrvJeHeg83gq17
+LOCATION:Church
+URL:https://maps.app.goo.gl/GARKdTe32N6ZDRhA7
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Sooraj & Anju — Wedding tomorrow
+END:VALARM
+END:VEVENT
+END:VCALENDAR
