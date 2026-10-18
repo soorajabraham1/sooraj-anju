@@ -81,7 +81,7 @@ body{
   width:100%;height:100%;
 }
 body.revealed .wreath-svg{
-  animation:wreathIn 1.6s cubic-bezier(.22,.68,.28,1) 2.25s both;
+  animation:wreathIn 1.6s cubic-bezier(.22,.68,.28,1) 0.2s both;
 }
 @keyframes wreathIn{from{opacity:0;transform:rotate(-7deg) scale(.93)}to{opacity:1;transform:none}}
 
@@ -103,14 +103,14 @@ body.revealed .wreath-svg{
   color:var(--brass);
   margin:2px 0;
 }
-body.revealed .f1{animation:nameIn 1.15s cubic-bezier(.22,.68,.28,1) 2.95s both}
-body.revealed .first-amp{animation:ampIn .85s cubic-bezier(.34,1.3,.64,1) 3.35s both}
-body.revealed .f2{animation:nameIn 1.15s cubic-bezier(.22,.68,.28,1) 3.60s both}
+body.revealed .f1{animation:nameIn 1.15s cubic-bezier(.22,.68,.28,1) 0.7s both}
+body.revealed .first-amp{animation:ampIn .85s cubic-bezier(.34,1.3,.64,1) 1.1s both}
+body.revealed .f2{animation:nameIn 1.15s cubic-bezier(.22,.68,.28,1) 1.35s both}
 
 /* full names + parentage, below the wreath */
 .person{margin-top:40px}
-body.revealed .person1{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 4.20s both}
-body.revealed .person2{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 4.60s both}
+body.revealed .person1{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 1.95s both}
+body.revealed .person2{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 2.35s both}
 
 .person .full{
   display:block;
@@ -165,7 +165,7 @@ body.revealed .person2{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 4.60s
   color:var(--sage);
 }
 body.revealed .verse{
-  animation:parentsIn 1s cubic-bezier(.22,.68,.28,1) 5.15s both;
+  animation:parentsIn 1s cubic-bezier(.22,.68,.28,1) 2.9s both;
 }
 
 .house{
@@ -178,7 +178,7 @@ body.revealed .verse{
   margin-top:7px;
 }
 
-/* names arrive once the envelope is out of the way */
+/* names arrive */
   animation:nameIn 1.25s cubic-bezier(.22,.68,.28,1) both;
 }
 
@@ -365,217 +365,10 @@ footer .sign{
   .hero{padding:72px 0 56px}
 }
 
-
-/* ---------- opening gate: envelope + seal ---------- */
-:root{
-  --wax:#A87A4E;--wax-lo:#845A34;--wax-hi:#C79A69;
-  --paper:#FBFBF9;--paper-sh:#EDEEE9;
-}
-
-body.sealed{overflow:hidden}
-
-#gate{
-  position:fixed;inset:0;z-index:100;
-  background:var(--porcelain);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:38px;
-  transition:opacity .75s ease 2.5s,visibility 0s linear 3.25s;
-}
-#gate.open{opacity:0;visibility:hidden;pointer-events:none}
-
-/* --- envelope --- */
-.envelope{
-  position:relative;
-  width:min(330px,80vw);
-  aspect-ratio:1/.66;
-  perspective:900px;
-  opacity:0;animation:gateIn 1.1s ease .35s both;
-}
-
-.env-back{
-  position:absolute;inset:0;
-  background:var(--paper-sh);
-  border:1px solid var(--rule);
-  box-shadow:0 18px 44px -22px rgba(20,31,27,.28);
-}
-
-/* the card that slides out */
-.letter{
-  position:absolute;
-  left:7%;right:7%;
-  top:9%;
-  height:78%;
-  background:var(--paper);
-  border:1px solid var(--rule);
-  box-shadow:0 6px 20px -12px rgba(20,31,27,.3);
-  z-index:2;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:12px;
-  transform:translateY(0);
-  transition:transform 1.05s cubic-bezier(.32,.72,.28,1) 1.15s,
-             opacity .5s ease 2.25s;
-}
-#gate.open .letter{transform:translateY(-64%)}
-
-.letter-mark{
-  font-family:var(--display);
-  font-weight:300;font-size:26px;
-  color:var(--ink);letter-spacing:.01em;
-}
-.letter-sub{
-  font-family:var(--mono);font-size:9px;
-  letter-spacing:.22em;text-transform:uppercase;
-  color:var(--sage);
-}
-
-/* front pocket: V-notched, sits above the letter so it emerges from behind */
-.env-front{
-  position:absolute;inset:0;
-  background:var(--paper);
-  border:1px solid var(--rule);
-  border-top:none;
-  clip-path:polygon(0 0,50% 46%,100% 0,100% 100%,0 100%);
-  z-index:3;
-}
-.env-front::before,.env-front::after{
-  content:"";position:absolute;bottom:0;width:52%;height:100%;
-  background:var(--paper-sh);opacity:.5;
-}
-.env-front::before{left:0;clip-path:polygon(0 100%,0 6%,100% 100%)}
-.env-front::after{right:0;clip-path:polygon(100% 100%,100% 6%,0 100%)}
-
-.env-flap{
-  position:absolute;top:0;left:0;right:0;height:64%;
-  background:var(--paper);
-  border:1px solid var(--rule);
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:top center;
-  transform:rotateX(0deg);
-  backface-visibility:hidden;
-  z-index:4;
-  transition:transform 1.15s cubic-bezier(.5,.02,.3,1) .38s;
-  display:flex;justify-content:center;
-  align-items:flex-start;
-  padding-top:6%;
-}
-#gate.open .env-flap{transform:rotateX(-172deg)}
-
-#gate.open .envelope{
-  transform:translateY(26px) scale(.97);
-  transition:transform 1s cubic-bezier(.4,0,.3,1) 1.9s;
-}
-#gate.open .env-back,#gate.open .env-front,#gate.open .env-flap{
-  opacity:0;transition:opacity .55s ease 2.3s,transform 1.15s cubic-bezier(.5,.02,.3,1) .38s;
-}
-#gate.open .letter{opacity:0}
-
-.env-title{
-  font-family:var(--display);
-  font-style:italic;font-weight:300;
-  font-size:clamp(17px,4.6vw,22px);
-  letter-spacing:.005em;
-  max-width:78%;
-  text-align:center;
-  color:var(--wax-lo);
-  white-space:nowrap;
-}
-
-/* --- seal at the flap point --- */
-.seal-btn{
-  position:absolute;
-  left:50%;top:64%;
-  /* above the flap so it reads as sealing it shut */
-  width:82px;height:82px;
-  transform:translate(-50%,-50%);
-  background:none;border:none;padding:0;cursor:pointer;
-  z-index:5;
-  transition:transform .32s cubic-bezier(.34,1.4,.64,1);
-}
-.seal-btn:hover{transform:translate(-50%,-50%) scale(1.07)}
-.seal-btn:active{transform:translate(-50%,-50%) scale(.95)}
-.seal-btn:focus-visible{outline:2px solid var(--brass);outline-offset:9px;border-radius:50%}
-.seal-btn svg{width:100%;height:100%;display:block}
-
-#gate.open .seal-btn{transform:translate(-50%,-50%);transition:none}
-
-.half{transition:transform .95s cubic-bezier(.3,.1,.2,1),opacity .7s ease .2s}
-#gate.open .half-l{transform:translate(-30px,60px) rotate(-26deg);opacity:0}
-#gate.open .half-r{transform:translate(30px,66px) rotate(22deg);opacity:0}
-
-.gate-hint{
-  font-family:var(--mono);font-size:10px;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:var(--sage);
-  opacity:0;animation:gateIn 1s ease 1.35s both;
-}
-#gate.open .gate-hint{opacity:0;transition:opacity .35s ease}
-
-@keyframes gateIn{to{opacity:1}}
-
-body.sealed .hero{opacity:0}
-body.revealed .hero{opacity:1;transition:opacity 1s ease 2.5s}
-
-@media (prefers-reduced-motion:reduce){
-  #gate,.envelope,.env-flap,.env-back,.env-front,.letter,.half,.seal-btn{transition:none;animation:none;opacity:1;transform:none}
-  .gate-hint{opacity:1;animation:none}
-  body.revealed .hero{transition:none}
-}
-
 </style>
 </head>
 
-<body class="sealed">
-
-<!-- ============ OPENING GATE ============ -->
-<div id="gate">
-  <div class="envelope">
-    <div class="env-back"></div>
-
-    <div class="letter">
-      <span class="letter-mark">Sooraj &amp; Anju</span>
-      <span class="letter-sub">28 &amp; 31 December 2026</span>
-    </div>
-
-    <div class="env-front"></div>
-    <div class="env-flap"><span class="env-title">Wedding Invitation</span></div>
-
-    <button class="seal-btn" id="sealBtn" aria-label="Open the invitation">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="waxG" cx="36%" cy="30%" r="80%">
-            <stop offset="0%"   stop-color="var(--wax-hi)"/>
-            <stop offset="56%"  stop-color="var(--wax)"/>
-            <stop offset="100%" stop-color="var(--wax-lo)"/>
-          </radialGradient>
-          <clipPath id="clipL"><rect x="0" y="0" width="100" height="200"/></clipPath>
-          <clipPath id="clipR"><rect x="100" y="0" width="100" height="200"/></clipPath>
-        </defs>
-
-        <ellipse cx="100" cy="182" rx="56" ry="6" fill="#141F1B" opacity=".10"/>
-
-        <g class="half half-l" clip-path="url(#clipL)">
-          <path d="M180.86,100.00C180.79,103.82 180.12,107.66 179.48,111.43C178.84,115.20 178.43,119.11 177.02,122.62C175.62,126.12 172.90,129.16 171.04,132.44C169.17,135.72 167.86,139.22 165.81,142.29C163.75,145.37 161.26,148.20 158.73,150.89C156.20,153.58 153.35,155.93 150.61,158.41C147.87,160.89 145.39,163.86 142.28,165.79C139.17,167.71 135.40,168.67 131.96,169.98C128.51,171.28 125.17,172.94 121.62,173.62C118.07,174.31 114.26,174.03 110.65,174.09C107.05,174.16 103.55,174.05 100.00,174.02C96.45,173.98 92.97,173.98 89.38,173.88C85.78,173.78 82.02,174.03 78.44,173.43C74.86,172.83 71.50,171.34 67.90,170.29C64.30,169.24 60.50,168.47 56.86,167.12C53.23,165.78 49.42,164.29 46.09,162.21C42.77,160.13 39.42,157.65 36.92,154.66C34.42,151.67 32.65,147.88 31.10,144.28C29.54,140.68 28.63,136.77 27.58,133.07C26.53,129.37 25.05,125.82 24.78,122.09C24.51,118.35 26.00,114.33 25.95,110.65C25.91,106.97 24.49,103.55 24.52,100.00C24.55,96.45 25.58,92.91 26.11,89.38C26.64,85.84 26.98,82.29 27.71,78.77C28.44,75.26 29.33,71.71 30.51,68.27C31.70,64.82 33.14,61.40 34.82,58.11C36.49,54.82 38.15,51.26 40.58,48.51C43.00,45.76 46.51,43.94 49.39,41.59C52.27,39.24 54.84,36.57 57.85,34.41C60.85,32.25 64.08,30.31 67.40,28.63C70.72,26.94 74.24,25.66 77.77,24.29C81.29,22.92 84.85,21.17 88.55,20.39C92.26,19.61 96.19,19.59 100.00,19.60C103.81,19.61 107.71,19.74 111.44,20.42C115.18,21.11 118.89,22.31 122.41,23.69C125.92,25.07 129.48,26.60 132.55,28.72C135.63,30.85 138.24,33.82 140.85,36.44C143.45,39.05 145.73,41.83 148.18,44.40C150.63,46.96 153.20,49.26 155.57,51.85C157.94,54.43 160.15,57.13 162.38,59.91C164.61,62.69 166.72,65.53 168.97,68.50C171.21,71.47 174.02,74.40 175.85,77.73C177.67,81.06 179.06,84.80 179.90,88.51C180.73,92.22 180.93,96.18 180.86,100.00Z" fill="url(#waxG)"/>
-          <circle cx="100" cy="100" r="61" fill="none" stroke="var(--wax-lo)" stroke-width="1.6" opacity=".42"/>
-          <text x="76" y="101" text-anchor="middle" dominant-baseline="central"
-                font-family="Fraunces, Georgia, serif" font-size="52"
-                fill="var(--wax-lo)" opacity=".55">S</text>
-        </g>
-
-        <g class="half half-r" clip-path="url(#clipR)">
-          <path d="M180.86,100.00C180.79,103.82 180.12,107.66 179.48,111.43C178.84,115.20 178.43,119.11 177.02,122.62C175.62,126.12 172.90,129.16 171.04,132.44C169.17,135.72 167.86,139.22 165.81,142.29C163.75,145.37 161.26,148.20 158.73,150.89C156.20,153.58 153.35,155.93 150.61,158.41C147.87,160.89 145.39,163.86 142.28,165.79C139.17,167.71 135.40,168.67 131.96,169.98C128.51,171.28 125.17,172.94 121.62,173.62C118.07,174.31 114.26,174.03 110.65,174.09C107.05,174.16 103.55,174.05 100.00,174.02C96.45,173.98 92.97,173.98 89.38,173.88C85.78,173.78 82.02,174.03 78.44,173.43C74.86,172.83 71.50,171.34 67.90,170.29C64.30,169.24 60.50,168.47 56.86,167.12C53.23,165.78 49.42,164.29 46.09,162.21C42.77,160.13 39.42,157.65 36.92,154.66C34.42,151.67 32.65,147.88 31.10,144.28C29.54,140.68 28.63,136.77 27.58,133.07C26.53,129.37 25.05,125.82 24.78,122.09C24.51,118.35 26.00,114.33 25.95,110.65C25.91,106.97 24.49,103.55 24.52,100.00C24.55,96.45 25.58,92.91 26.11,89.38C26.64,85.84 26.98,82.29 27.71,78.77C28.44,75.26 29.33,71.71 30.51,68.27C31.70,64.82 33.14,61.40 34.82,58.11C36.49,54.82 38.15,51.26 40.58,48.51C43.00,45.76 46.51,43.94 49.39,41.59C52.27,39.24 54.84,36.57 57.85,34.41C60.85,32.25 64.08,30.31 67.40,28.63C70.72,26.94 74.24,25.66 77.77,24.29C81.29,22.92 84.85,21.17 88.55,20.39C92.26,19.61 96.19,19.59 100.00,19.60C103.81,19.61 107.71,19.74 111.44,20.42C115.18,21.11 118.89,22.31 122.41,23.69C125.92,25.07 129.48,26.60 132.55,28.72C135.63,30.85 138.24,33.82 140.85,36.44C143.45,39.05 145.73,41.83 148.18,44.40C150.63,46.96 153.20,49.26 155.57,51.85C157.94,54.43 160.15,57.13 162.38,59.91C164.61,62.69 166.72,65.53 168.97,68.50C171.21,71.47 174.02,74.40 175.85,77.73C177.67,81.06 179.06,84.80 179.90,88.51C180.73,92.22 180.93,96.18 180.86,100.00Z" fill="url(#waxG)"/>
-          <circle cx="100" cy="100" r="61" fill="none" stroke="var(--wax-lo)" stroke-width="1.6" opacity=".42"/>
-          <text x="126" y="101" text-anchor="middle" dominant-baseline="central"
-                font-family="Fraunces, Georgia, serif" font-size="52"
-                fill="var(--wax-lo)" opacity=".55">A</text>
-        </g>
-      </svg>
-    </button>
-  </div>
-
-  <p class="gate-hint">Tap seal to open</p>
-</div>
+<body class="revealed">
 
 <!-- ============ HERO ============ -->
 <header class="hero">
@@ -624,7 +417,7 @@ body.revealed .hero{opacity:1;transition:opacity 1s ease 2.5s}
 
     <div class="rail">
       <div class="stop key reveal">
-        <span class="time">11:00 AM</span>
+        <span class="time">11:30 AM</span>
         <p class="what">Engagement ceremony</p>
         <p class="where">Church</p>
         <a class="maplink" href="https://maps.app.goo.gl/T35mMdFq8n9m6hzb8" target="_blank" rel="noopener">Open in Maps</a>
@@ -654,7 +447,7 @@ body.revealed .hero{opacity:1;transition:opacity 1s ease 2.5s}
 
     <div class="rail">
       <div class="stop key reveal">
-        <span class="time">5:30 PM</span>
+        <span class="time">5:00 PM</span>
         <p class="what">Wedding ceremony</p>
         <p class="where">Church</p>
         <a class="maplink" href="https://maps.app.goo.gl/GARKdTe32N6ZDRhA7" target="_blank" rel="noopener">Open in Maps</a>
@@ -702,24 +495,6 @@ document.getElementById('heroDate2').textContent = CONFIG.heroLine2;
 document.getElementById('engDate').textContent  = CONFIG.engDate;
 document.getElementById('wedDate').textContent  = CONFIG.wedDate;
 
-
-/* --- opening gate --- */
-(function(){
-  var gate = document.getElementById('gate');
-  var btn  = document.getElementById('sealBtn');
-  if (!gate || !btn) return;
-
-  var opened = false;
-  function open(){
-    if (opened) return;
-    opened = true;
-    gate.classList.add('open');
-    document.body.classList.remove('sealed');
-    document.body.classList.add('revealed');
-    setTimeout(function(){ gate.remove(); }, 3400);
-  }
-  btn.addEventListener('click', open);
-})();
 
 /* --- scroll reveal --- */
 const io = new IntersectionObserver((entries) => {

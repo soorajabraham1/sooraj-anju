@@ -6,10 +6,10 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:engagement-20261228-soorajanju@invitation
 DTSTAMP:20260812T000000Z
-DTSTART:20261228T053000Z
+DTSTART:20261228T060000Z
 DTEND:20261228T083000Z
 SUMMARY:Sooraj & Anju — Engagement
-DESCRIPTION:Engagement ceremony at 11:00 AM\, followed by lunch.\n\nChurch: https://maps.app.goo.gl/T35mMdFq8n9m6hzb8
+DESCRIPTION:Engagement ceremony at 11:30 AM\, followed by lunch.\n\nChurch: https://maps.app.goo.gl/T35mMdFq8n9m6hzb8
 LOCATION:Church
 URL:https://maps.app.goo.gl/T35mMdFq8n9m6hzb8
 BEGIN:VALARM
