@@ -81,7 +81,7 @@ body{
   width:100%;height:100%;
 }
 body.revealed .wreath-svg{
-  animation:wreathIn 1.6s cubic-bezier(.22,.68,.28,1) 0.2s both;
+  animation:wreathIn 1.4s cubic-bezier(.22,.68,.28,1) 0.1s both;
 }
 @keyframes wreathIn{from{opacity:0;transform:rotate(-7deg) scale(.93)}to{opacity:1;transform:none}}
 
@@ -103,14 +103,14 @@ body.revealed .wreath-svg{
   color:var(--brass);
   margin:2px 0;
 }
-body.revealed .f1{animation:nameIn 1.15s cubic-bezier(.22,.68,.28,1) 0.7s both}
-body.revealed .first-amp{animation:ampIn .85s cubic-bezier(.34,1.3,.64,1) 1.1s both}
-body.revealed .f2{animation:nameIn 1.15s cubic-bezier(.22,.68,.28,1) 1.35s both}
+body.revealed .f1{animation:nameIn 1.15s cubic-bezier(.22,.68,.28,1) 1.3s both}
+body.revealed .first-amp{animation:ampIn .85s cubic-bezier(.34,1.3,.64,1) 1.7s both}
+body.revealed .f2{animation:nameIn 1.15s cubic-bezier(.22,.68,.28,1) 1.95s both}
 
 /* full names + parentage, below the wreath */
 .person{margin-top:40px}
-body.revealed .person1{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 1.95s both}
-body.revealed .person2{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 2.35s both}
+body.revealed .person1{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 2.6s both}
+body.revealed .person2{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 3.0s both}
 
 .person .full{
   display:block;
@@ -165,7 +165,7 @@ body.revealed .person2{animation:parentsIn .9s cubic-bezier(.22,.68,.28,1) 2.35s
   color:var(--sage);
 }
 body.revealed .verse{
-  animation:parentsIn 1s cubic-bezier(.22,.68,.28,1) 2.9s both;
+  animation:parentsIn 1s cubic-bezier(.22,.68,.28,1) 3.5s both;
 }
 
 .house{
@@ -176,10 +176,6 @@ body.revealed .verse{
   text-transform:uppercase;
   color:var(--sage);
   margin-top:7px;
-}
-
-/* names arrive */
-  animation:nameIn 1.25s cubic-bezier(.22,.68,.28,1) both;
 }
 
 @keyframes nameIn{
@@ -392,7 +388,7 @@ footer .sign{
     <div class="person person2">
       <span class="full">Anju Sunny</span>
       <span class="parents">D/o Mr. Sunny T J &amp; Mrs. Solly Jacob</span>
-      <span class="house">Thaiparambil House</span>
+      <span class="house">Thyparambil House</span>
     </div>
 
     <p class="hero-date reveal" id="heroDate">Engagement &middot; 28 December 2026</p>
@@ -473,7 +469,7 @@ footer .sign{
 
 <footer>
   <div class="wrap">
-    <p class="sign">With love, Delna Sunny, Stephin Thankachan &amp; Anju Abraham</p>
+    <p class="sign">With love, Delna Sunny &amp; Anju Abraham</p>
   </div>
 </footer>
 
